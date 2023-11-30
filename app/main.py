@@ -6,7 +6,7 @@ Created on Tue Nov 28 21:22:24 2023
 """
 import streamlit as st
 import pickle
-import sklearn
+import joblib
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -143,8 +143,8 @@ def add_sidebar():
 
 
 def add_predictions(input_data):
-  model = sklearn.externals.joblib.load(open("model/model.pkl", "rb"))
-  scaler = sklearn.externals.joblib.load(open("model/model.pkl", "rb"))
+  model = joblib.load(open("model/model.pkl", "rb"))
+  scaler=joblib.load(open("model/scaler.pkl", "rb"))
   
   input_array = np.array(list(input_data.values())).reshape(1, -1)
   
